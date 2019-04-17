@@ -1,0 +1,23 @@
+{
+    "name": "sjaakp/yii2-polyglot",
+    "description": "Ultralight language chooser for the Yii 2.0 framework",
+    "keywords": ["yii", "yii2", "extension", "language", "multi-language", "internationalization"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sjaak Priester",
+            "email": "sjaak@sjaakpriester.nl",
+            "homepage": "http://sjaakpriester.nl"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "yiisoft/yii2": "~2.0.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "sjaakp\\polyglot\\": ""
+        }
+    }
+}
