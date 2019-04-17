@@ -48,7 +48,7 @@ directory. Add the following to the configuration array:
         ],
         // ... even more components
         
-The `language` property is an array of the languages (or more correctly the _locale_)
+The `language` property is an array of the languages (or more correctly the _locale_s)
 the web site should support. The keys of this array are the names of the locales in 
 the ICU-format, just like [Yii recommends](https://www.yiiframework.com/doc/guide/2.0/en/tutorial-i18n#locale).
 **One of the keys should be the same as the `language`-property of the application.**
@@ -87,7 +87,7 @@ They are made by [famfamfam](http://www.famfamfam.com/lab/icons/flags/), by the 
 
 ## Bootstrap ##
 
-**Polyglot** has to bee bootstrapped. Do this by adding the following to the
+**Polyglot** has to be bootstrapped. Do this by adding the following to the
 application configuration array:
 
     <php
@@ -97,7 +97,7 @@ application configuration array:
     ]
 
 There probably already is a `bootstrap` property in your configuration file; just
-add `'bootstrap'` to it.
+add `'polyglot'` to it.
 
 ## Widget ## 
 
@@ -111,6 +111,6 @@ Rendering the **yii2-polyglot** widget anywhere in a `View` is just a matter of:
 	...
 
 As you will most likely have the **Polyglot** widget on all of your pages, the 
-preferable place the widget would be the layout viewfile.
+preferable place for the widget would be one of the layout viewfiles.
 
 The **Polyglot** widget has no options.
