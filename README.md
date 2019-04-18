@@ -3,7 +3,7 @@ yii2-polyglot
 
 #### Ultralight language chooser for Yii2 ####
 
-**yii2-polyglot** is an application component plus a widget with flag buttons to choose the application 
+**yii2-polyglot** is an application component plus two widgets with flag buttons to choose the application 
 language. It can be used in the [Yii 2.0](https://www.yiiframework.com/ "Yii") PHP Framework.
 
 **yii2-polyglot** was developed as an alternative to other language choosers,
@@ -82,7 +82,7 @@ So, to show the Dutch language with the Belgian flag, we would use:
 
 If the array value is just a `string`, **Polyglot** tries to devise the flag name itself.
 
-A bunch of flags (247 of them) can be found in **yii2-polyglot**'s `assets` directory.
+A bunch of flags (247 of them) can be found in **yii2-polyglot**'s `assets/flags` directory.
 They are made by [famfamfam](http://www.famfamfam.com/lab/icons/flags/), by the way.
 
 ## Bootstrap ##
@@ -99,18 +99,18 @@ application configuration array:
 There probably already is a `bootstrap` property in your configuration file; just
 add `'polyglot'` to it.
 
-## Widget ## 
+## Widgets ## 
 
-Rendering the **yii2-polyglot** widget anywhere in a `View` is just a matter of:
+There are two widgets in the **yii2-polyglot** package. **PolyglotButtons** displays the
+language options as a row of flag buttons. **PolyglotDropdown** is a dropdown menu.
+Rendering a **yii2-polyglot** widget anywhere in a `View` is just a matter of:
 
 	<?php
-	use sjaakp\polyglot\PolyglotWidget;
+	use sjaakp\polyglot\PolyglotButtons;
 	?>
 	...
-    <?= PolyglotWidget::widget() ?>;
+    <?= PolyglotButtons::widget() ?>;
 	...
 
 As you will most likely have the **Polyglot** widget on all of your pages, the 
-preferable place for the widget would be one of the layout viewfiles.
-
-The **Polyglot** widget has no options.
+preferable place for a widget would be one of the layout viewfiles.

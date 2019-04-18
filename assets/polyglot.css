@@ -1,38 +1,50 @@
 
-.polyglot label {
-    position: relative;
-    cursor: pointer;
-    width: 16px;
-    height: 11px;
-    margin: 0;
-}
-.polyglot [type=radio]  {
-    display: none;
-}
 .polyglot img  {
-    display: block;
-    border: 1px solid transparent;
-    opacity: 0.45;
-}
-.polyglot label::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #888;
-    z-index: -1;
+    opacity: 0.5;
 }
 .polyglot img:hover    {
     opacity: 1;
 }
-.polyglot [type=radio]:checked + label img   {
+.polyglot .act img   {
     opacity: 1;
+}
+
+.polyglot a {
+    border: 1px solid transparent;
+    background-color: #ccc;
+}
+
+.polyglot .act a    {
     border-color: #fff;
 }
-.polyglot .flags    {
+
+.polyglot-bl {
     display: inline-block;
     line-height: 0;
-    height: 11px;
+}
+.polyglot-bl a {
+    display: inline-block;
+    background-color: #ccc;
+    margin: 0 2px;
+}
+.polyglot-dd    {
+}
+
+.polyglot-dd .dropdown-toggle {
+    background-color: transparent;
+    color: #fff;
+}
+.dropdown-toggle a   {
+}
+.polyglot-dd .dropdown-menu {
+    flex-direction: column;
+    min-width: auto;
+    padding: 0;
+    background-color: inherit;
+
+}
+.polyglot-dd a {
+    display: block;
+    line-height: 0;
+    margin: 4px;
 }

@@ -26,20 +26,11 @@ use yii\web\Cookie;
  */
 class Polyglot extends Component implements BootstrapInterface
 {
-    /**
-     * @var array supported languages.
-     */
     public $languages = [];
 
-    /**
-     * @var string
-     */
     public $cookieName = 'polyglot';
 
-    /**
-     * @var int cookie expiration time in seconds
-     */
-    public $cookieStamina = 31536000;   // 365 * 24 * 3600, one year
+    public $cookieExpire = 31536000;   // 365 * 24 * 3600, one year
 
     /**
      * @param Application $app
@@ -81,7 +72,7 @@ class Polyglot extends Component implements BootstrapInterface
             $respCookies->add(new Cookie([
                 'name' => $this->cookieName,
                 'value' => $post,
-                'expire' => time() + $this->cookieStamina
+                'expire' => time() + $this->cookieExpire
             ]));
         }
         else    {
