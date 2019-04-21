@@ -17,9 +17,8 @@ namespace sjaakp\polyglot;
  */
 class PolyglotButtons extends PolyglotBase
 {
-
     public function run()
     {
-        return $this->renderButtons([ 'class' => 'polyglot' ]);
+        return $this->renderButtons([ 'class' => 'polyglot polyglot-bl' ]);
     }
 }

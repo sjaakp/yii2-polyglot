@@ -10,8 +10,7 @@
 }
 
 .polyglot a {
-    border: 1px solid transparent;
-    background-color: #ccc;
+    background-color: #fff;
 }
 
 .polyglot .act a    {
@@ -21,30 +20,30 @@
 .polyglot-bl {
     display: inline-block;
     line-height: 0;
+    margin: auto 0;
 }
 .polyglot-bl a {
     display: inline-block;
-    background-color: #ccc;
-    margin: 0 2px;
 }
 .polyglot-dd    {
-}
-
-.polyglot-dd .dropdown-toggle {
-    background-color: transparent;
-    color: #fff;
-}
-.dropdown-toggle a   {
-}
-.polyglot-dd .dropdown-menu {
+    display: flex;
     flex-direction: column;
-    min-width: auto;
-    padding: 0;
-    background-color: inherit;
-
+    justify-content: center;
 }
 .polyglot-dd a {
     display: block;
     line-height: 0;
     margin: 4px;
+}
+.polyglot-dd .dropdown-toggle {
+    background-color: transparent;
+    margin: 0;
+}
+.polyglot-dd .dropdown-menu {
+    flex-direction: column;
+    min-width: auto;
+    left: 4px;
+    padding: 0;
+    background-color: inherit;
+
 }

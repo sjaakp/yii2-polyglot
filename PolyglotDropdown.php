@@ -13,6 +13,7 @@ namespace sjaakp\polyglot;
 
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class PolyglotDropdown
@@ -20,8 +21,18 @@ use yii\helpers\Html;
  */
 class PolyglotDropdown extends PolyglotBase
 {
+    /**
+     * @var array HTML options for the surrounding element
+     * @tip if you put PolyglotDropdown in a Bootstrap NavBar, set this to the NavBar's color defining classes,
+     * f.i. [ 'class' => 'navbar-dark bg-primary' ]
+     */
     public $options;
-    public $toggleOptions;
+
+    /**
+     * @var array HTML options for the toggler element
+     * Default sets the colors like those of other NavBar links.
+     */
+    public $toggleOptions = [ 'class' => 'nav-link' ];
 
     public function run()
     {
@@ -30,7 +41,7 @@ class PolyglotDropdown extends PolyglotBase
 
         Html::addCssClass($this->toggleOptions, 'dropdown-toggle');
 
-        $r = $this->renderButton($actLang, $actLabel, '#', array_merge($this->toggleOptions, [
+        $r = $this->renderButton($actLang, $actLabel, '#', ArrayHelper::merge($this->toggleOptions, [
             'data-toggle' => 'dropdown',
             'aria-haspopup' => 'true',
             'aria-expanded' => 'false',
@@ -39,7 +50,7 @@ class PolyglotDropdown extends PolyglotBase
 
         $r .= $this->renderButtons([ 'class' => 'dropdown-menu' ]);
 
-        Html::addCssClass($this->options, 'polyglot polyglot-dd dropdown navbar-dark bg-primary');
+        Html::addCssClass($this->options, 'polyglot polyglot-dd dropdown');
         $this->options['aria-expanded'] = 'false';
         return Html::tag('div', $r, $this->options);
     }

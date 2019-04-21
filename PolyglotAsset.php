@@ -24,6 +24,4 @@ class PolyglotAsset extends AssetBundle
     public $css = [
         'polyglot.css'
     ];
-    public $depends = [
-    ];
 }

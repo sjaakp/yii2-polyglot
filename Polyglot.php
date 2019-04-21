@@ -26,11 +26,28 @@ use yii\web\Cookie;
  */
 class Polyglot extends Component implements BootstrapInterface
 {
+    /**
+     * @var array supported languages
+     *   - key      locale in ICU-format
+     *   - value    one of:
+     *              - string    human readable language name
+     *              - [
+     *                  'label' => <language name>
+     *                  'flag' => <flag name, without '.png' (optional)>
+     *                ]
+     * One of the keys must be the same as the value of the application's 'language' property
+     */
     public $languages = [];
 
+    /**
+     * @var string name of cookie
+     */
     public $cookieName = 'polyglot';
 
-    public $cookieExpire = 31536000;   // 365 * 24 * 3600, one year
+    /**
+     * @var int cookie expiration period in seconds
+     */
+    public $cookieStamina = 31536000;   // 365 * 24 * 3600, one year
 
     /**
      * @param Application $app
@@ -51,18 +68,8 @@ class Polyglot extends Component implements BootstrapInterface
      */
     public function beforeAction($event)
     {
-/*        $session = Yii::$app->session;
-        $post = Yii::$app->request->post('polyglot');
-        if ($post)  {
-            Yii::$app->language = $post;
-            $session->set($this->cookieName, $post);
-        }
-        else    {
-            $lang = $session->get($this->cookieName);
-            if ($lang) Yii::$app->language = $lang;
-        }*/
-
         $request = Yii::$app->request;
+
         $post = $request->post('polyglot');
         if ($post)  {
             Yii::$app->language = $post;
@@ -72,11 +79,23 @@ class Polyglot extends Component implements BootstrapInterface
             $respCookies->add(new Cookie([
                 'name' => $this->cookieName,
                 'value' => $post,
-                'expire' => time() + $this->cookieExpire
+                'expire' => time() + $this->cookieStamina
             ]));
         }
         else    {
+            // check cookie
             $lang = $request->cookies->getValue($this->cookieName);
+
+            // if no cookie, see if any of the request's acceptable languages is supported by us
+            if (! $lang)    {
+                foreach ($request->acceptableLanguages as $accept)  {
+                    if (array_key_exists($accept, $this->languages))    {
+                        $lang = $accept;
+                        break;
+                    }
+                }
+            }
+
             if ($lang) Yii::$app->language = $lang;
         }
     }

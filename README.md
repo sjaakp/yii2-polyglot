@@ -12,7 +12,7 @@ which in my view are often overly complex.
 **yii2-polyglot** lets the user choose her favourite language by clicking on a
 flag button. The chosen language becomes the site's main language and is stored in a cookie.
 
-A demonstration of **Yii2-polyglot** is [here](http://www.sjaakpriester.nl/software/polyglot).
+A demonstration of **Yii2-polyglot** is [here](http://demo.sjaakpriester.nl/polyglot).
 
 ## Installation ##
 
@@ -38,7 +38,7 @@ directory. Add the following to the configuration array:
 	'components' => [
         // ... other components, like 'cache' and 'errorHandler'
         'polyglot' => [
-            'class' => 'common\extensions\polyglot\Polyglot',
+            'class' => 'sjaakp\polyglot\Polyglot',
             'languages' => [
                 'en-US' => 'English',
                 'de-DE' => 'Deutsch',
@@ -48,14 +48,15 @@ directory. Add the following to the configuration array:
         ],
         // ... even more components
         
-The `language` property is an array of the languages (or more correctly the _locale_s)
+The `language` property is an array of the languages (or more correctly the *locale*s)
 the web site should support. The keys of this array are the names of the locales in 
 the ICU-format, just like [Yii recommends](https://www.yiiframework.com/doc/guide/2.0/en/tutorial-i18n#locale).
-**One of the keys should be the same as the `language`-property of the application.**
+**One of the keys should be the same as the
+ [`language`-property](https://www.yiiframework.com/doc/api/2.0/yii-base-application#$language-detail) of the application.**
 
 The values of the array should be one of the following:
 
-- `string` Human-readable name of the language. It appears as popup tooltip.
+- `string` human-readable name of the language. It appears as popup tooltip.
 
 - `array` with two keys:
     - `"label"` the human-readable language name;
@@ -68,7 +69,7 @@ So, to show the Dutch language with the Belgian flag, we would use:
 	'components' => [
         // ... other components, like 'cache' and 'errorHandler'
         'polyglot' => [
-            'class' => 'common\extensions\polyglot\Polyglot',
+            'class' => 'sjaakp\polyglot\Polyglot',
             'languages' => [
                 'en-US' => 'English',
                 // ... more languages

@@ -14,6 +14,7 @@ namespace sjaakp\polyglot;
 use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 /**
@@ -22,6 +23,9 @@ use yii\helpers\Url;
  */
 class PolyglotBase extends Widget
 {
+    /**
+     * @var array HTML options for the buttons
+     */
     public $buttonOptions = [];
 
     protected $_languages;
@@ -47,7 +51,7 @@ class PolyglotBase extends Widget
         $current = Url::current();
         $buttons = [];
         foreach ($this->_languages as $lang => $label)   {
-            $buttons[] = $this->renderButton($lang, $label, $current, array_merge ($this->buttonOptions, [
+            $buttons[] = $this->renderButton($lang, $label, $current, ArrayHelper::merge ($this->buttonOptions, [
                 'data' => [
                     'method' => 'post',
                     'params' => [
@@ -64,7 +68,7 @@ class PolyglotBase extends Widget
         if (! is_array($label)) $label = [ 'name' => $label ];
         $flag = $label['flag'] ?? strtolower(substr($lang, -2));
         $opts['title'] = $label['name'];
-        $img = Html::img($this->_flagUrl . $flag . '.png')/* . $label['name']*/;
+        $img = Html::img($this->_flagUrl . $flag . '.png');
         if ($lang == Yii::$app->language) Html::addCssClass($opts, 'act');
 
         return Html::a($img, $url, $opts);
