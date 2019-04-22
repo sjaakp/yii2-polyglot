@@ -3,11 +3,12 @@ yii2-polyglot
 
 #### Ultralight language chooser for Yii2 ####
 
-**yii2-polyglot** is an application component plus two widgets with flag buttons to choose the application 
-language. It can be used in the [Yii 2.0](https://www.yiiframework.com/ "Yii") PHP Framework.
+**yii2-polyglot** is an application component plus two widgets with flag buttons to
+ choose the application language.
+  It can be used in the [Yii 2.0](https://www.yiiframework.com/ "Yii") PHP Framework.
 
 **yii2-polyglot** was developed as an alternative to other language choosers,
-which in my view are often overly complex.
+which in my opinion are often overly complex.
 
 **yii2-polyglot** lets the user choose her favourite language by clicking on a
 flag button. The chosen language becomes the site's main language and is stored in a cookie.
@@ -29,7 +30,8 @@ You can manually install **yii2-polyglot** by [downloading the source in ZIP-for
 
 ## Using yii2-polyglot ##
 
-First of all, Polyglot should be installed as an [application component](https://www.yiiframework.com/doc/guide/2.0/en/structure-application-components). This is done
+First of all, Polyglot should be installed as an [application component](https://www.yiiframework.com/doc/guide/2.0/en/structure-application-components "Yii"). 
+This is done
 in the main configuration file, usually called `web.php` or `main.php` in the `config`
 directory. Add the following to the configuration array:
 
@@ -49,10 +51,10 @@ directory. Add the following to the configuration array:
         // ... even more components
         
 The `language` property is an array of the languages (or more correctly the *locale*s)
-the web site should support. The keys of this array are the names of the locales in 
-the ICU-format, just like [Yii recommends](https://www.yiiframework.com/doc/guide/2.0/en/tutorial-i18n#locale).
+the web site supports. The keys of this array are the names of the locales in 
+the ICU-format, just like [Yii recommends](https://www.yiiframework.com/doc/guide/2.0/en/tutorial-i18n#locale "Yii").
 **One of the keys should be the same as the
- [`language`-property](https://www.yiiframework.com/doc/api/2.0/yii-base-application#$language-detail) of the application.**
+ [`language`-property](https://www.yiiframework.com/doc/api/2.0/yii-base-application#$language-detail "Yii") of the application.**
 
 The values of the array should be one of the following:
 
@@ -100,6 +102,17 @@ application configuration array:
 There probably already is a `bootstrap` property in your configuration file; just
 add `'polyglot'` to it.
 
+#### Polyglot options ####
+
+Apart from the **languages**-settings, **Polyglot** has three more options:
+
+ - **useCookie** `bool` If set to `false`, **Polyglot** will *not* store the preferred
+ language in a cookie, but in the PHP session. As a consequence, the language choice
+ will only persist for one session. Default: `true`.
+ - **cookieName** `string` Also used as the session key if **useCookie** is `false`.
+ Default: `"polyglot"`.
+ - **cookieStamina** `integer` Cookie expiration time in seconds. Default: `31536000` (one year). 
+
 ## Widgets ## 
 
 There are two widgets in the **yii2-polyglot** package. **PolyglotButtons** displays the
@@ -113,5 +126,25 @@ Rendering a **yii2-polyglot** widget anywhere in a `View` is just a matter of:
     <?= PolyglotButtons::widget() ?>;
 	...
 
-As you will most likely have the **Polyglot** widget on all of your pages, the 
-preferable place for a widget would be one of the layout viewfiles.
+Or:
+
+	<?php
+	use sjaakp\polyglot\PolyglotDropdown;
+	?>
+	...
+    <?= PolyglotDropdown::widget() ?>;
+	...
+
+As you will most likely want to have the **Polyglot** widget on all of your pages, the 
+preferable place for a widget would be the layout viewfile (or one of the layout viewfiles).
+
+#### Widget options ####
+
+**PolyglotButtons** and **PolyglotDropdown** have the following options:
+
+ - **options** `array` HTML options for the surrounding element. Default: `[]`.
+ - **buttonOptions** `array` HTML options for the individual flag buttons.
+ Default: `[]`.
+ - **toggleOptions** `array` (**PolyglotDropdown** only) HTML options for the
+ toggle button. Default: `['class' => 'nav-link']`.
+ 

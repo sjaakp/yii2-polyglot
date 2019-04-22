@@ -40,6 +40,12 @@ class Polyglot extends Component implements BootstrapInterface
     public $languages = [];
 
     /**
+     * @var bool whether to store the preferred language in a cookie
+     * If false, the language is stored in the session
+     */
+    public $useCookie = true;
+
+    /**
      * @var string name of cookie
      */
     public $cookieName = 'polyglot';
@@ -74,19 +80,30 @@ class Polyglot extends Component implements BootstrapInterface
         if ($post)  {
             Yii::$app->language = $post;
 
-            $respCookies = Yii::$app->response->cookies;
-            // set new cookie
-            $respCookies->add(new Cookie([
-                'name' => $this->cookieName,
-                'value' => $post,
-                'expire' => time() + $this->cookieStamina
-            ]));
+            if ($this->useCookie)   {
+                $respCookies = Yii::$app->response->cookies;
+                // set new cookie
+                $respCookies->add(new Cookie([
+                    'name' => $this->cookieName,
+                    'value' => $post,
+                    'expire' => time() + $this->cookieStamina
+                ]));
+            }
+            else    {
+                Yii::$app->session->set($this->cookieName, $post);
+            }
         }
         else    {
-            // check cookie
-            $lang = $request->cookies->getValue($this->cookieName);
+            $lang = null;
+            if ($this->useCookie)   {
+                // check cookie
+                $lang = $request->cookies->getValue($this->cookieName);
+            }
+            else    {
+                $lang = Yii::$app->session->get($this->cookieName);
+            }
 
-            // if no cookie, see if any of the request's acceptable languages is supported by us
+            // if no cookie or session, see if any of the request's acceptable languages is supported by us
             if (! $lang)    {
                 foreach ($request->acceptableLanguages as $accept)  {
                     if (array_key_exists($accept, $this->languages))    {

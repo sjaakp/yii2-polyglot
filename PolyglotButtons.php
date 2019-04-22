@@ -11,14 +11,22 @@
 
 namespace sjaakp\polyglot;
 
+use yii\helpers\Html;
+
 /**
  * Class PolyglotButtons
  * @package sjaakp\polyglot
  */
 class PolyglotButtons extends PolyglotBase
 {
+    /**
+     * @var array HTML options for the surrounding element
+     */
+    public $options = [];
+
     public function run()
     {
-        return $this->renderButtons([ 'class' => 'polyglot polyglot-bl' ]);
+        Html::addCssClass($this->options, 'polyglot polyglot-bl');
+        return $this->renderButtons($this->options);
     }
 }

@@ -26,7 +26,7 @@ class PolyglotDropdown extends PolyglotBase
      * @tip if you put PolyglotDropdown in a Bootstrap NavBar, set this to the NavBar's color defining classes,
      * f.i. [ 'class' => 'navbar-dark bg-primary' ]
      */
-    public $options;
+    public $options = [];
 
     /**
      * @var array HTML options for the toggler element
