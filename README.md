@@ -3,6 +3,10 @@ yii2-polyglot
 
 #### Ultralight language chooser for Yii2 ####
 
+[![Latest Stable Version](https://poser.pugx.org/sjaakp/yii2-polyglot/v/stable)](https://packagist.org/packages/sjaakp/yii2-polyglot)
+[![Total Downloads](https://poser.pugx.org/sjaakp/yii2-polyglot/downloads)](https://packagist.org/packages/sjaakp/yii2-polyglot)
+[![License](https://poser.pugx.org/sjaakp/yii2-polyglot/license)](https://packagist.org/packages/sjaakp/yii2-polyglot)
+
 **yii2-polyglot** is an application component plus two widgets with flag buttons to
  choose the application language.
   It can be used in the [Yii 2.0](https://www.yiiframework.com/ "Yii") PHP Framework.
